@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/eleve/Documents/C++/TP-MEDEV/src/lib.cpp
+lib.h
+/home/eleve/Documents/C++/TP-MEDEV/src/lib.h
+
+/home/eleve/Documents/C++/TP-MEDEV/src/lib.h
+
+/home/eleve/Documents/C++/TP-MEDEV/src/main.cpp
+iostream
+-
+lib.h
+/home/eleve/Documents/C++/TP-MEDEV/src/lib.h
+

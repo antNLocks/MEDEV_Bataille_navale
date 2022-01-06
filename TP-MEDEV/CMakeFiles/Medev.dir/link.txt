@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/Medev.dir/tests/gtests.cpp.o CMakeFiles/Medev.dir/src/lib.cpp.o  -o build/Medev  build_gtest/lib/libgtest.a -lpthread 
