@@ -3,4 +3,4 @@ EI2 - TP3 de MEDEV - Projet √† 4 personnes visant √† impl√©menter un jeu de bata
 
 Voici le lien du google doc avec la structure plus pr√©cise du projet : https://docs.google.com/document/d/123RgCNmwY4_tE-sCCrv5Ud6ao1cAk6sebvjltveYyAM/edit?usp=sharing.
 
-Nous mettons en place des tests unitaires ‡ l'aide de Google Test.
+Nous mettons en place des tests unitaires ‡ l'aide de Google Test et nous rÈalisons un CMake.
