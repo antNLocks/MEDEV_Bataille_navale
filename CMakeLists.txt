@@ -11,12 +11,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
 # Locate Threads
 # needed for Google Test
 find_package(Threads REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLUT REQUIRED)
 
 # Allow include to use paths relative to project root
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/tests)
 include_directories(${PROJECT_SOURCE_DIR}/googletest/googletest/include) # add the include directory of google test
-
+include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
 
 
 # create target
@@ -25,25 +27,28 @@ include_directories(${PROJECT_SOURCE_DIR}/googletest/googletest/include) # add t
 # The second executable is for running the main code, add all needed files for the code to compile.
 # Note : you can write all files by hand or use file(GLOB...) or file(GLOB_RECURSE...)
 
-
+# Dans les lignes de code suivantes, on stocke dans ${sourcefile} tous les fichiers sources cpp sans les fichiers comportants un main (nomenclature REGEX : "main.cpp$")
 # Store unfiltered list of files into temporary list
 file( GLOB_RECURSE _tmp_list Bataille_navale/*.cpp )
 # Resulted list is initially empty. Copy all needed elements into it.
 set(sourcefiles "")
-message(STATUS ${_tmp_list})
+
 foreach(f ${_tmp_list})
-    message(STATUS ${f})
-    if(NOT f MATCHES "/home/eleve/Bureau/medev/MEDEV_Bataille_navale/Bataille_navale/lib.cpp")
-        list(APPEND ${sourcefiles} ${f})
+    if(NOT f MATCHES "main.cpp$")
+        list(APPEND sourcefiles ${f})
     endif()
 endforeach()
-message(STATUS ${sourcefiles})
 
 
-add_executable(bataille_navale_test Bataille_navale/main_gtests.cpp ${sourcefiles})
+
+
+
+add_executable(bataille_navale_test Bataille_navale/gtests_main.cpp ${sourcefiles})
 add_executable(bataille_navale Bataille_navale/main.cpp ${sourcefiles})
 
 
 
 # link run_tests to gtest and pthread
 target_link_libraries(bataille_navale_test ${PROJECT_SOURCE_DIR}/build_gtest/lib/libgtest.a pthread)
+
+target_link_libraries(bataille_navale ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
