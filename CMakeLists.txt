@@ -4,6 +4,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 # 2. Indicate the name of the project :
 project(bataille_navale)
 
+set(CMAKE_CXX_STANDARD 11) # set Cpp11
+
 # Binaries will be saved there
 # ${PROJECT_SOURCE_DIR} is a variable, it is the top level source directory for the current project.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../build/exe)
@@ -13,17 +15,16 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../build/exe)
 find_package(Threads REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
+find_program(GCOV_PATH gcov REQUIRED)
+find_program(LCOV_PATH lcov REQUIRED)
+
+set(CMAKE_CXX_FLAGS "--coverage")
 
 # Allow include to use paths relative to project root
 include_directories(${PROJECT_SOURCE_DIR}/Bataille_navale)
 include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
 
 
-# create target
-# 3. Uncomment these two next lines and complete them.
-# The first executable is for running the tests, add all needed files for the tests.
-# The second executable is for running the main code, add all needed files for the code to compile.
-# Note : you can write all files by hand or use file(GLOB...) or file(GLOB_RECURSE...)
 
 # Dans les lignes de code suivantes, on stocke dans ${sourcefile} tous les fichiers sources cpp sans les fichiers comportants un main (nomenclature REGEX : "main.cpp$")
 # Store unfiltered list of files into temporary list
@@ -40,7 +41,7 @@ endforeach()
 
 
 
-
+# create target
 add_executable(bataille_navale_test Bataille_navale/gtests_main.cpp ${sourcefiles})
 add_executable(bataille_navale Bataille_navale/main.cpp ${sourcefiles})
 

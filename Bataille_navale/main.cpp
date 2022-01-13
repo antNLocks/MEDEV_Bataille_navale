@@ -39,10 +39,10 @@ int main(int argc, char** argv)
     glutInit(&argc, argv); //Init de glut
     glutInitDisplayMode(GLUT_RGB); //Choix du mode d'affichage
     glutInitWindowPosition(200, 200); //Position initaile de la fenêtre
-    glutInitWindowSize(700, 700); //Taille initiale de la fenêtre
+    glutInitWindowSize(1100, 600); //Taille initiale de la fenêtre
     glutCreateWindow("Bataille Navale"); //Creation de la fenêtre GLUT
 
-    glClearColor(1.0f, 1.0f, 1.0f, 0.0f); //Couleur effacement buffer
+    glClearColor(0.960f, 0.964f, 0.756f, 0.0f); //Couleur effacement buffer noir
     
     //Fonction de callbacks
     glutDisplayFunc(affichage);

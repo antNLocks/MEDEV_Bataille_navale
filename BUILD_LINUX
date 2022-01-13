@@ -1,12 +1,57 @@
 #!/bin/bash
 
-#Ce fichier permet de compiler le projet sous Linux
+#Ce fichier permet de compiler le projet sous Linux et bien plus !
 
 # 1 - Nommer le dossier courant "GIT"
 # 2 - Copier le dossier "build_gtest" provenant de la compilation de Google Test dans le dossier parent (./..)
-# 3 - Créer un dossier "build" dans le dossier parent (./..)
-# 4 - Executer ce script dans le terminal avec la commande "./BUILD_LINUX" ou en double-cliquant sur ce fichier
+# 3 - Executer "sudo apt install lcov" et "sudo apt install doxygen"
 
-cd ./../build
-cmake ./../GIT/
+# Pour juste compiler : Executer ce script dans le terminal avec la commande "./BUILD_LINUX" ou en double-cliquant sur ce fichier
+# Pour générer la couverture de code et la documentation : Executer ce script dans le terminal avec la commande "./BUILD_LINUX -all"
+
+
+
+
+#Creation de l'architecture si c'est pas déjà fait
+if [[ ! -d ./../build ]]
+then
+    mkdir ./../build
+fi
+
+if [[ ! -d ./../build/CMake ]]
+then
+    mkdir ./../build/CMake
+fi
+
+if [[ ! -d ./../build/CodeCover ]]
+then
+    mkdir ./../build/CodeCover
+fi
+
+if [[ ! -d ./../build/Doxygen ]]
+then
+    mkdir ./../build/Doxygen
+fi
+
+
+#Lancement de la compilation avec CMake
+cd ./../build/CMake
+cmake ./../../GIT/
 make
+echo -e "\n########## Compilation done ##########\n\n"
+
+if test "$1" == "-all";
+then
+  read -p "Press any key to run tests"
+  ./../exe/bataille_navale_test
+  echo -e "\n########## Tests done ##########\n\n"
+
+  read -p "Press any key to generate code cover"
+  gcov CMakeFiles/bataille_navale_test.dir/Bataille_navale/gtests_main.cpp.o
+  lcov -o codeCover.info -c -f -d .
+  genhtml -o ./../CodeCover codeCover.info
+  echo -e "\n########## Generate code cover done ##########\n\n"
+
+  read -p "Press any key to generate documentation"
+  doxygen ./../../GIT/htmlDox
+fi
