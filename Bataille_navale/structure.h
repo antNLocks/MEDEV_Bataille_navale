@@ -1,7 +1,9 @@
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 
-enum TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN };
+#include <vector>
+
+enum TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
 
 enum Etat {START, TOUR_JOUEUR, TOUR_ORDI, VICTOIRE_JOUEUR, VICTOIRE_ORDI };
 
@@ -11,7 +13,7 @@ struct Tir {
 	// La case en haut a gauche est la case (0;0)
 	// On ecrit dabord la ligne puis la colonne, ex : B3 = (2;1)
 
-	bool Direction;
+	bool Resultat;
 	// false : 0 : a cote
 	// true : 1 : touche
 
@@ -50,6 +52,14 @@ public:
 
     //CONSTRUCTEURS
 
+    Plateau() {
+        this -> State = START;
+        this -> bateauxJoueur = initialiseBateaux();
+        this -> bateauxOrdi = initialiseBateaux();
+        this -> tirsJoueur = [];
+        this -> tirsOrdi = [];
+    }
+
     //GETTEURS
 
     Etat getState() const;
@@ -70,9 +80,20 @@ public:
     // Change la position du bateau considere, permet au joueur de placer ses bateaux en debut de partie 
     // (State = START)
 
+    void majBateaux();
+    //Enleve les bateaux entierement touches de la liste
+
+    bool testcoulejoueur(Bateau b);
+    //Teste si un bateau joueur est entierement touche
+
+    bool testcouleordi(Bateau b);
+    //Teste si un bateau ordinateur est entierement touche
+
     void input(Touche);
 
 };
+
+
 
 
 
