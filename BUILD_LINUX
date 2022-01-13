@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Ce fichier permet de compiler le projet sous Linux
+
+# 1 - Nommer le dossier courant "GIT"
+# 2 - Copier le dossier "build_gtest" provenant de la compilation de Google Test dans le dossier parent (./..)
+# 3 - Créer un dossier "build" dans le dossier parent (./..)
+# 4 - Executer ce script dans le terminal avec la commande "./BUILD_LINUX" ou en double-cliquant sur ce fichier
+
+cd ./../build
+cmake ./../GIT/
+make

@@ -6,7 +6,7 @@ project(bataille_navale)
 
 # Binaries will be saved there
 # ${PROJECT_SOURCE_DIR} is a variable, it is the top level source directory for the current project.
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../build/exe)
 
 # Locate Threads
 # needed for Google Test
@@ -15,9 +15,7 @@ find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
 # Allow include to use paths relative to project root
-include_directories(${PROJECT_SOURCE_DIR})
-include_directories(${PROJECT_SOURCE_DIR}/tests)
-include_directories(${PROJECT_SOURCE_DIR}/googletest/googletest/include) # add the include directory of google test
+include_directories(${PROJECT_SOURCE_DIR}/Bataille_navale)
 include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} )
 
 
@@ -49,6 +47,6 @@ add_executable(bataille_navale Bataille_navale/main.cpp ${sourcefiles})
 
 
 # link run_tests to gtest and pthread
-target_link_libraries(bataille_navale_test ${PROJECT_SOURCE_DIR}/build_gtest/lib/libgtest.a pthread)
+target_link_libraries(bataille_navale_test ${PROJECT_SOURCE_DIR}/../build_gtest/lib/libgtest.a pthread)
 
 target_link_libraries(bataille_navale ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
