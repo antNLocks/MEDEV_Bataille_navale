@@ -15,16 +15,18 @@ private :
 	float coorGrilleOrdi[4];
 
 	std::vector<Bateau> bateauxJoueur;
-	// Contient les bateaux appartenant au joueur a afficher sur la grille du joueur
+	// Contient les bateaux appartenant au joueur à afficher sur la grille du joueur
 	std::vector<Bateau> bateauxOrdi;
-	// Contient les bateaux appartenant a l ordi qui ne seront pas affiche
+	// Contient les bateaux appartenant a l'ordi qui ne seront pas affiché
 	std::vector<Tir> tirsJoueur;
-	// Contient les tirs du joueur a afficher sur la grille de l ordi
+	// Contient les tirs du joueur à afficher sur la grille de l'ordi
 	std::vector<Tir> tirsOrdi;
-	// Contient les tirs de l ordi a afficher sur la grille du joueur
+	// Contient les tirs de l'ordi à afficher sur la grille du joueur
 
-	void afficheGrille(float x_bas_gauche, float y_bas_gauche, float x_haut_droite, float y_haut_droite);
 	void colorierCase(bool grilleActive, int noColonne, int noLigne, float R, float G, float B);
+
+	void afficheGrille(bool grilleActive);
+	void afficheBateaux(bool grilleActive);
 	void afficheTirRate(bool grilleActive, int noColonne, int noLigne);
 	void afficheTirTouche(bool grilleActive, int noColonne, int noLigne);
 	void afficheTirCoule(bool grilleActive, int noColonne, int noLigne);
