@@ -691,8 +691,190 @@ void Plateau::maketirjoueur(int ligne,int colonne) {
 }
 
 void Plateau::maketirordi() {
+	//Pour l instant, l ordi est idiot
 	
+	Tir t;
+	int b = 0;
+	
+	//Initialisation bidon necessaire
+	t.Position[0] = 30;
+	t.Position[1] = 30;
+	
+	//Initialisation de la position
+	int ligne = rand() % 10;
+	int colonne = rand() % 10;
+	
+	while ((t.Position[0] == 30) || (t.Position[1] == 30)) { //Verification pour ne pas tirer deux fois au meme endroit
+		
+		for (int i=0; i<tirsOrdi.size();i++) { //On regarde si on n'a pas deja un tir a cet endroit
+			if ((tirsOrdi[i].Position[0] == ligne) && (tirsOrdi[i].Position[1] == colonne)) {
+				b = 1;
+			}
+		} 
+		if (b==0) { //Si c'est bon, on tire ici
+			t.Position[0] = ligne;
+			t.Position[1] = colonne;
+		}
+		else { //Sinon on recommence
+			ligne = rand() % 10;
+			colonne = rand() % 10;
+		}
+		b=0;	
+	}	
+	
+	//Verification si touche ou coule	
+	int a = 0;
 
-
-
+	for (int i=0;i<bateauxJoueur.size();i++) { //On verifie si on a touche un des bateaux
+		switch (bateauxJoueur[i].Type) { //On fonctionne selon le type de bateau
+			
+			case TORPILLEUR : //2 de longueur
+				if (bateauxJoueur[i].Direction) { //Le bateau va vers le bas
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 1 == t.Position[1])) {
+						a=1;
+					}
+				}
+				else { //Le bateau va vers la droite
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 1 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+				}
+				break;
+			
+			case SOUS_MARIN : //3 de longueur
+				if (bateauxJoueur[i].Direction) { //Le bateau va vers le bas
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 1 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 2 == t.Position[1])) {
+						a=1;
+					}
+					
+				}
+				else { //Le bateau va vers la droite
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 1 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 2 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+				}
+				break;
+				
+			case CONTRE_TORPILLEUR: //3 de longueur
+				if (bateauxJoueur[i].Direction) { //Le bateau va vers le bas
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 1 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 2 == t.Position[1])) {
+						a=1;
+					}
+					
+				}
+				else { //Le bateau va vers la droite
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 1 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 2 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+				}
+				break;
+				
+			case CROISEUR : //4 de longueur
+				if (bateauxJoueur[i].Direction) { //Le bateau va vers le bas
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 1 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 2 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 3 == t.Position[1])) {
+						a=1;
+					}
+					
+				}
+				else { //Le bateau va vers la droite
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 1 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 2 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 3 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+				}
+				break;
+				
+			case PORTE_AVION : //5 de longueur
+				if (bateauxJoueur[i].Direction) { //Le bateau va vers le bas
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 1 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 2 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 3 == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] + 4 == t.Position[1])) {
+						a=1;
+					}
+					
+				}
+				else { //Le bateau va vers la droite
+					if ((bateauxJoueur[i].Position[0] == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 1 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 2 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 3 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+					if ((bateauxJoueur[i].Position[0] + 4 == t.Position[0]) && (bateauxJoueur[i].Position[1] == t.Position[1])) {
+						a=1;
+					}
+				}
+				break;
+			}
+		}
+		
+		//Si on touche, on a resultat = 1
+		if (a==1) { t.Resultat = true;}
+		else {t.Resultat = false;}
+		
+		//On ajoute le tir au vecteur
+		tirsOrdi.push_back(t);
 }
