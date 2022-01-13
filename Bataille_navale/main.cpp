@@ -3,10 +3,12 @@
 //#include <Windows.h>
 #include <iostream>
 
-// Uncomment when commit
-#include <GL/gl.h>
-#include <GL/glut.h>
-//#include <glut.h>
+#ifdef __linux__
+    #include <GL/gl.h>
+    #include <GL/glut.h>
+#else
+    #include <glut.h>
+#endif
 
 GLvoid affichage() {
     glClear(GL_COLOR_BUFFER_BIT);
