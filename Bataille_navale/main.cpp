@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     glutInitWindowSize(1100, 600); //Taille initiale de la fenêtre
     glutCreateWindow("Bataille Navale"); //Creation de la fenêtre GLUT
 
-    glClearColor(0.960f, 0.964f, 0.756f, 0.0f); //Couleur effacement buffer noir
+    glClearColor(0.960f, 0.964f, 0.756f, 0.0f); //Couleur effacement buffer beige
     
     //Fonction de callbacks
     glutDisplayFunc(affichage);
