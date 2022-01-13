@@ -48,6 +48,6 @@ add_executable(bataille_navale Bataille_navale/main.cpp ${sourcefiles})
 
 
 # link run_tests to gtest and pthread
-target_link_libraries(bataille_navale_test ${PROJECT_SOURCE_DIR}/../build_gtest/lib/libgtest.a pthread)
+target_link_libraries(bataille_navale_test ${PROJECT_SOURCE_DIR}/../build_gtest/lib/libgtest.a pthread ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
 
 target_link_libraries(bataille_navale ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
