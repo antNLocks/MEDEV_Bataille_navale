@@ -43,10 +43,11 @@ int main(int argc, char** argv)
     glutCreateWindow("Bataille Navale"); //Creation de la fenêtre GLUT
 
     glClearColor(0.960f, 0.964f, 0.756f, 0.0f); //Couleur effacement buffer noir
-    
+
     //Fonction de callbacks
     glutDisplayFunc(affichage);
     glutKeyboardFunc(clavier);
+
 
     glutMainLoop();
 }

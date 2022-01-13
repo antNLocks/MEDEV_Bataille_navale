@@ -31,12 +31,12 @@ void Afficheur::afficheTouche(bool grilleActive, int noLigne, int noColonne)
     noLigne = 9 - noLigne;
 
     float coorGrille[4];
-    if (grilleActive) { // C'est la grille du joueur qui est affichée à gauche
+    if (grilleActive) { // C'est la grille du joueur qui est affichï¿½e ï¿½ gauche
         for (int index = 0; index < 4; index++) {
             coorGrille[index] = coorGrilleJoueur[index];
         }
     }
-    else { // C'est la grille de l'ordi qui est affichée à droite
+    else { // C'est la grille de l'ordi qui est affichï¿½e ï¿½ droite
         for (int index = 0; index < 4; index++) {
             coorGrille[index] = coorGrilleOrdi[index];
         }
@@ -57,7 +57,7 @@ void Afficheur::afficheTouche(bool grilleActive, int noLigne, int noColonne)
 Afficheur::Afficheur()
 {
     nbrCase = 10;
-    coorGrilleJoueur[0] = 2 * (1.0f / 11) - 1; // Abcisse des coordonnées écran du point en bas à gauche de la grille du joueur
+    coorGrilleJoueur[0] = 2 * (1.0f / 11) - 1; // Abcisse des coordonnï¿½es ï¿½cran du point en bas ï¿½ gauche de la grille du joueur
     coorGrilleJoueur[1] = 2 * (1.0f / 6) - 1;
     coorGrilleJoueur[2] = 2 * (5.0f / 11) - 1;
     coorGrilleJoueur[3] = 2 * (5.0f / 6) - 1;
