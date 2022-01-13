@@ -26,10 +26,10 @@ struct Tir {
 
 struct Bateau {
 	TypeBateau Type;
-	
+
 	int Position[2];
 	// La case en haut a gauche est la case (0;0)
-	// On écrit dabord la ligne puis la colonne, ex : B3 = (2;1)
+	// On Ã©crit dabord la ligne puis la colonne, ex : B3 = (2;1)
 
 	bool Direction;
 	// false : 0 : horizontal, bateau dessine a partir de la case position vers la droite
@@ -37,7 +37,7 @@ struct Bateau {
 };
 
 class Plateau {
-    
+
 private:
     Etat State;
 
@@ -76,18 +76,18 @@ public:
     //FONCTIONS
 
     vector<Bateau> initialiseBateauxJ();
-    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas 
+    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas
     // pour le joueur
-    
+
     vector<Bateau> initialiseBateauxO();
-    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas 
+    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas
     // pour l ordi
 
     void testVictoire();
     // Verifie si l un des joueurs a gagne et change l etat (State)
 
     void changerBateau(Bateau b);
-    // Change la position du bateau considere, permet au joueur de placer ses bateaux en debut de partie 
+    // Change la position du bateau considere, permet au joueur de placer ses bateaux en debut de partie
     // (State = START)
 
     void majBateaux();
@@ -100,7 +100,7 @@ public:
     //Teste si un bateau ordinateur est entierement touche
 
     void maketirjoueur(int ligne,int colonne);
-    //Prend une position donnée et ajoute un tir au joueur
+    //Prend une position donnï¿½e et ajoute un tir au joueur
 
     void maketirordi();
     //Ajoute un tir a l ordinateur en fonction du comportement defini
