@@ -57,8 +57,8 @@ public:
         this -> State = START;
         this -> bateauxJoueur = initialiseBateaux();
         this -> bateauxOrdi = initialiseBateaux();
-        this -> tirsJoueur = [];
-        this -> tirsOrdi = [];
+        this -> tirsJoueur = {};
+        this -> tirsOrdi = {};
     }
 
     //GETTEURS
@@ -90,13 +90,13 @@ public:
     bool testcouleordi(Bateau b);
     //Teste si un bateau ordinateur est entierement touche
 
-    void maketirjoueur(int P[2]);
+    void maketirjoueur(int ligne,int colonne);
     //Prend une position donnée et ajoute un tir au joueur
 
     void maketirordi();
     //Ajoute un tir a l ordinateur en fonction du comportement defini
 
-    void input(Touche);
+    // void input(Touche); a implementer plus tard
 
 };
 
