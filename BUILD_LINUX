@@ -4,12 +4,12 @@
 
 # 1 - Nommer le dossier courant "GIT"
 # 2 - Copier le dossier "build_gtest" provenant de la compilation de Google Test dans le dossier parent (./..)
-# 3 - Executer "sudo apt install lcov" et "sudo apt install doxygen"
+# 3 - Vérifier la présence des services lcov; gcov; genhtml et doxygen et executer "sudo apt install lcov", "sudo apt install doxygen"... si un service n'est pas présent
 
 # Pour juste compiler : Executer ce script dans le terminal avec la commande "./BUILD_LINUX" ou en double-cliquant sur ce fichier
 # Pour générer la couverture de code et la documentation : Executer ce script dans le terminal avec la commande "./BUILD_LINUX -all"
 
-
+# Les fichiers résultants sont stockés à l'endroit ./../build
 
 
 #Creation de l'architecture si c'est pas déjà fait
