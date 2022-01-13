@@ -682,5 +682,7 @@ void Plateau::maketirjoueur(int P[2]) {
 		
 }
 
+void Plateau::maketirordi() {}
+
 
 

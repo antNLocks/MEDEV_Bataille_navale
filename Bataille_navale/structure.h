@@ -90,7 +90,7 @@ public:
     bool testcouleordi(Bateau b);
     //Teste si un bateau ordinateur est entierement touche
 
-    void maketirjoueur(int Position[2]);
+    void maketirjoueur(int P[2]);
     //Prend une position donnée et ajoute un tir au joueur
 
     void maketirordi();
