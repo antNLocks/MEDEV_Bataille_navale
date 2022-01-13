@@ -2,6 +2,7 @@
 #define STRUCTURE_H
 
 #include <vector>
+using namespace std;
 
 enum TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
 
@@ -88,6 +89,12 @@ public:
 
     bool testcouleordi(Bateau b);
     //Teste si un bateau ordinateur est entierement touche
+
+    void maketirjoueur(int Position[2]);
+    //Prend une position donnée et ajoute un tir au joueur
+
+    void maketirordi();
+    //Ajoute un tir a l ordinateur en fonction du comportement defini
 
     void input(Touche);
 
