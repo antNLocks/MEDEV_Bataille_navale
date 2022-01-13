@@ -31,12 +31,12 @@ void Afficheur::colorierCase(bool grilleActive, int noColonne, int noLigne, floa
     noLigne = 9 - noLigne;
 
     float coorGrille[4];
-    if (grilleActive) { // C'est la grille du joueur qui est affich�e � gauche
+    if (grilleActive) { // C'est la grille du joueur qui est affichée à gauche
         for (int index = 0; index < 4; index++) {
             coorGrille[index] = coorGrilleJoueur[index];
         }
     }
-    else { // C'est la grille de l'ordi qui est affich�e � droite
+    else { // C'est la grille de l'ordi qui est affichée à droite
         for (int index = 0; index < 4; index++) {
             coorGrille[index] = coorGrilleOrdi[index];
         }
@@ -85,7 +85,7 @@ void Afficheur::dataFiller()
 Afficheur::Afficheur()
 {
     nbrCase = 10;
-    coorGrilleJoueur[0] = 2 * (1.0f / 11) - 1; // Abcisse des coordonn�es �cran du point en bas � gauche de la grille du joueur
+    coorGrilleJoueur[0] = 2 * (1.0f / 11) - 1; // Abcisse des coordonnées écran du point en bas à gauche de la grille du joueur
     coorGrilleJoueur[1] = 2 * (1.0f / 6) - 1;
     coorGrilleJoueur[2] = 2 * (5.0f / 11) - 1;
     coorGrilleJoueur[3] = 2 * (5.0f / 6) - 1;
