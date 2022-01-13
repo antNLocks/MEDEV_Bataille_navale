@@ -1,9 +1,5 @@
 #include "structure.h"
 
-//CONSTRUCTEURS
-
-
-
 //GETTEURS
 
 Etat Plateau::getState() const {
@@ -701,7 +697,7 @@ void Plateau::maketirordi() {
 	t.Position[1] = 30;
 	
 	//Initialisation de la position
-	int ligne = rand() % 10;
+	int ligne = rand() % 10; //int entre 0 et 9
 	int colonne = rand() % 10;
 	
 	while ((t.Position[0] == 30) || (t.Position[1] == 30)) { //Verification pour ne pas tirer deux fois au meme endroit
@@ -878,3 +874,51 @@ void Plateau::maketirordi() {
 		//On ajoute le tir au vecteur
 		tirsOrdi.push_back(t);
 }
+
+vector<Bateau> Plateau::initialiseBateauxJ() {
+	
+	int ligne,colonne;
+	
+	//AJOUT PORTE AVION
+	Bateau b1;
+	b1.Type = PORTE_AVION;
+		
+	//Direction
+	int D1 = rand() % 2; //int entre 0 et 1
+	bool D11 = (bool)D1;
+	b1.Direction = D11;
+		
+	//Position
+	if (b1.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 6; //int entre 1 et 6 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 6;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxJoueur.push_back(b1);
+	
+	//AJOUT	CROISEUR	
+	Bateau b2;
+	b2.Type = CROISEUR;
+	
+	//Direction
+	int D2 = rand() % 2; //int entre 0 et 1
+	bool D22 = (bool)D2;
+	b2.Direction = D22;
+	
+	//Position
+	if (b2.Direction) {
+		
+	}
+	else {
+		
+	}
+		
+	
+	
+}
+

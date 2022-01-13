@@ -59,8 +59,8 @@ public:
 
     Plateau() {
         this -> State = START;
-        this -> bateauxJoueur = initialiseBateaux();
-        this -> bateauxOrdi = initialiseBateaux();
+        this -> bateauxJoueur = initialiseBateauxJ();
+        this -> bateauxOrdi = initialiseBateauxO();
         this -> tirsJoueur = {};
         this -> tirsOrdi = {};
     }
@@ -75,8 +75,13 @@ public:
 
     //FONCTIONS
 
-    vector<Bateau> initialiseBateaux();
-    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas
+    vector<Bateau> initialiseBateauxJ();
+    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas 
+    // pour le joueur
+    
+    vector<Bateau> initialiseBateauxO();
+    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas 
+    // pour l ordi
 
     void testVictoire();
     // Verifie si l un des joueurs a gagne et change l etat (State)
