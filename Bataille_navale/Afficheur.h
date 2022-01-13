@@ -5,7 +5,7 @@
 
 /// <summary>
 /// \class Afficheur
-/// \brief Permet l'affichage graphique du jeu à partir de l'état courant en mémoire
+/// \brief Permet l'affichage graphique du jeu
 /// </summary>
 class Afficheur {
 
@@ -33,6 +33,9 @@ private :
 
 public :
 	Afficheur();
+	/// <summary>
+	/// Réalise l'affichage à partir de l'état du jeu courant en mémoire
+	/// </summary>
 	void affichage();
 
 };
