@@ -54,7 +54,7 @@ struct Bateau {
 /// Une classe qui contient les donnees sur les bateaux et les tirs des deux adversaires, et letat de la partie
 ///
 class Plateau {
-    
+
 private:
     
     ///

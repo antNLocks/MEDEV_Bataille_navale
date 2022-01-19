@@ -7,26 +7,22 @@
 
 #include "Afficheur.h"
 
-void Afficheur::afficheGrille(float x_bas_gauche, float y_bas_gauche, float x_haut_droite, float y_haut_droite)
+void Afficheur::afficheGrille(bool grilleActive)
 {
-    float largeur = (x_haut_droite - x_bas_gauche) / nbrCase;
-    float hauteur = (y_haut_droite - y_bas_gauche) / nbrCase;
     for (int i = 0; i < nbrCase; i++) {
         for (int j = 0; j < nbrCase; j++) {
-            glBegin(GL_QUADS);
             // Alternance de la couleur des cases
-            if ((i + j) % 2 == 0) {glColor3f(0.211f, 0.580f, 0.921f);}
-            else {glColor3f(0.211f, 0.682f, 0.921f);}
-            glVertex2f(x_bas_gauche + i*largeur, y_bas_gauche + j*hauteur);
-            glVertex2f(x_bas_gauche + (i+1) * largeur, y_bas_gauche + j * hauteur);
-            glVertex2f(x_bas_gauche + (i+1) * largeur, y_bas_gauche + (j+1) * hauteur);
-            glVertex2f(x_bas_gauche + i * largeur, y_bas_gauche + (j+1) * hauteur);
-            glEnd();
+            if ((i + j) % 2 == 0) {
+                colorierCase(grilleActive, i, j, 0.211f, 0.580f, 0.921f);
+            }
+            else {
+                colorierCase(grilleActive, i, j, 0.211f, 0.682f, 0.921f);
+            }
         }
     }
 }
 
-void Afficheur::colorierCase(bool grilleActive, int noColonne, int noLigne, float R, float G, float B)
+void Afficheur::colorierCase(bool grilleActive, int noLigne, int noColonne, float R, float G, float B)
 {
     noLigne = 9 - noLigne;
 
@@ -55,17 +51,17 @@ void Afficheur::colorierCase(bool grilleActive, int noColonne, int noLigne, floa
 
 void Afficheur::afficheTirRate(bool grilleActive, int noColonne, int noLigne)
 {
-    colorierCase(grilleActive, noColonne, noLigne, 0.0f, 0.0f, 1.0f); // bleu
+    colorierCase(grilleActive, noLigne ,noColonne, 0.0f, 0.0f, 1.0f); // bleu
 }
 
 void Afficheur::afficheTirTouche(bool grilleActive, int noLigne, int noColonne)
 {
-    colorierCase(grilleActive, noColonne, noLigne, 1.0f, 0.0f, 0.0f); // rouge
+    colorierCase(grilleActive, noLigne, noColonne, 1.0f, 0.0f, 0.0f); // rouge
 }
 
 void Afficheur::afficheTirCoule(bool grilleActive, int noColonne, int noLigne)
 {
-    colorierCase(grilleActive, noColonne, noLigne, 0.364f, 0.023f, 0.501f); // violet
+    colorierCase(grilleActive, noLigne, noColonne, 0.364f, 0.023f, 0.501f); // violet
 }
 
 void Afficheur::dataFiller()
@@ -99,8 +95,10 @@ void Afficheur::affichage()
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    afficheGrille(coorGrilleJoueur[0], coorGrilleJoueur[1], coorGrilleJoueur[2], coorGrilleJoueur[3]);
-    afficheGrille(coorGrilleOrdi[0], coorGrilleOrdi[1], coorGrilleOrdi[2], coorGrilleOrdi[3]);
+    afficheGrille(true);
+    afficheGrille(false);
+
+    // Tests d'affichage à retirer
     afficheTirTouche(true, 2, 1);
     afficheTirCoule(true, 4, 1);
     afficheTirRate(true, 6, 1);
