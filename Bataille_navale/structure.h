@@ -12,51 +12,83 @@ enum TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLE
 
 enum Etat {START, TOUR_JOUEUR, TOUR_ORDI, VICTOIRE_JOUEUR, VICTOIRE_ORDI };
 
+///
+/// Représente un tir avec sa position et s'il a touché ou non
+///
 struct Tir {
-
+    
+    ///
+    /// La case en haut a gauche est la case (0;0). On ecrit dabord la ligne puis la colonne, ex : B3 = (2;1)
+    ///
 	int Position[2];
-	// La case en haut a gauche est la case (0;0)
-	// On ecrit dabord la ligne puis la colonne, ex : B3 = (2;1)
 
-	bool Resultat;
-	// false : 0 : a cote
-	// true : 1 : touche
+    ///
+    /// false: a cote true: touche
+    ///	
+    bool Resultat;
 
 };
 
+///
+/// Représente un bateau en donnant son type, sa position et sa direction
+///
 struct Bateau {
-	TypeBateau Type;
 	
+    ///
+    /// Donne le type de bateau: TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
+    ///
+    TypeBateau Type;
+	
+    ///
+    /// La case en haut a gauche est la case (0;0). On écrit dabord la ligne puis la colonne, ex : B3 = (2;1)
+    ///
 	int Position[2];
-	// La case en haut a gauche est la case (0;0)
-	// On écrit dabord la ligne puis la colonne, ex : B3 = (2;1)
 
+    ///
+    /// false: horizontal, bateau dessine a partir de la case position vers la droite. true: vertical, bateau dessine  a partir de la case position vers le bas
+    ///
 	bool Direction;
-	// false : 0 : horizontal, bateau dessine a partir de la case position vers la droite
-	// true : 1 : vertical, bateau dessine a partir de la case position vers le bas
 };
 
+///
+/// Une classe qui contient les donnees sur les bateaux et les tirs des deux adversaires, et letat de la partie
+///
 class Plateau {
     
 private:
+    
+    ///
+    /// Etat dans laquelle la partie se trouve : Etat {START, TOUR_JOUEUR, TOUR_ORDI, VICTOIRE_JOUEUR, VICTOIRE_ORDI };
+    ///
     Etat State;
 
+    ///
+    ///Contient les bateaux appartenant au joueur a afficher sur la grille du joueur
+    ///
     vector<Bateau> bateauxJoueur;
-    // Contient les bateaux appartenant au joueur a afficher sur la grille du joueur
-
+    
+    ///
+    ///Contient les bateaux appartenant a l ordi qui ne seront pas affiche
+    ///
     vector<Bateau> bateauxOrdi;
-    // Contient les bateaux appartenant a l ordi qui ne seront pas affiche
 
+    ///
+    ///Contient les tirs du joueur a afficher sur la grille de l ordi
+    ///
     vector<Tir> tirsJoueur;
-    // Contient les tirs du joueur a afficher sur la grille de l ordi
 
+    ///
+    ///Contient les tirs de l ordi a afficher sur la grille du joueur
+    ///
     vector<Tir> tirsOrdi;
-    // Contient les tirs de l ordi a afficher sur la grille du joueur
 
 public:
 
     //CONSTRUCTEURS
 
+    ///
+    ///Construit un plateau avec des bateaux places aleatoirement et une liste de vecteurs tirs vides
+    ///
     Plateau() {
         this -> State = START;
         this -> bateauxJoueur = initialiseBateauxJ();
@@ -67,43 +99,77 @@ public:
 
     //GETTEURS
 
+    ///
+    ///Renvoie l etat du plateau
+    ///
     Etat getState() const;
+
+    ///
+    ///Renvoie la liste des bateaux du joueur
+    ///
     vector<Bateau> getBateauxJoueur() const;
+
+    ///
+    ///Renvoie la liste des bateaux de l ordi
+    ///
     vector<Bateau> getBateauxOrdi() const;
+
+    ///
+    ///Renvoie la liste des tirs du joueur
+    ///
     vector<Tir> getTirsJoueur() const;
+
+    ///
+    ///Renvoie la liste des tirs de l ordi
+    ///
     vector<Tir> getTirsOrdi() const;
 
     //FONCTIONS
 
+    ///
+    /// Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour le joueur
+    ///
     vector<Bateau> initialiseBateauxJ();
-    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas 
-    // pour le joueur
     
+    ///
+    /// Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour l ordi
+    ///
     vector<Bateau> initialiseBateauxO();
-    // Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas 
-    // pour l ordi
 
+    ///
+    /// Verifie si l un des joueurs a gagne et change l etat (State)
+    ///
     void testVictoire();
-    // Verifie si l un des joueurs a gagne et change l etat (State)
 
+    ///
+    /// Change la position du bateau considere, permet au joueur de placer ses bateaux en debut de partie (State = START)
+    ///
     void changerBateau(Bateau b);
-    // Change la position du bateau considere, permet au joueur de placer ses bateaux en debut de partie 
-    // (State = START)
 
+    ///
+    ///Enleve les bateaux entierement touches de la liste
+    ///
     void majBateaux();
-    //Enleve les bateaux entierement touches de la liste
 
+    ///
+    ///Teste si un bateau joueur est entierement touche
+    ///
     bool testcoulejoueur(Bateau b);
-    //Teste si un bateau joueur est entierement touche
 
+    ///
+    ///Teste si un bateau ordinateur est entierement touche
+    ///
     bool testcouleordi(Bateau b);
-    //Teste si un bateau ordinateur est entierement touche
 
+    ///
+    ///Prend une position donnée et ajoute un tir au joueur
+    ///
     void maketirjoueur(int ligne,int colonne);
-    //Prend une position donnée et ajoute un tir au joueur
 
+    ///
+    ///Ajoute un tir a l ordinateur en fonction du comportement defini
+    ///
     void maketirordi();
-    //Ajoute un tir a l ordinateur en fonction du comportement defini
 
     // void input(Touche); a implementer plus tard
 
