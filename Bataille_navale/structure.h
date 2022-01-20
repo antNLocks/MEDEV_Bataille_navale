@@ -8,15 +8,16 @@
 #include <time.h>       /* time */
 using namespace std;
 
-enum TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
+#define NB_TYPES_BATEAU 5
+enum TypeBateau { PORTE_AVION = 0, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
 
 enum Etat {START, TOUR_JOUEUR, TOUR_ORDI, VICTOIRE_JOUEUR, VICTOIRE_ORDI };
 
 ///
-/// Représente un tir avec sa position et s'il a touché ou non
+/// Reprï¿½sente un tir avec sa position et s'il a touchï¿½ ou non
 ///
 struct Tir {
-    
+
     ///
     /// La case en haut a gauche est la case (0;0). On ecrit dabord la ligne puis la colonne, ex : B3 = (2;1)
     ///
@@ -24,23 +25,23 @@ struct Tir {
 
     ///
     /// false: a cote true: touche
-    ///	
+    ///
     bool Resultat;
 
 };
 
 ///
-/// Représente un bateau en donnant son type, sa position et sa direction
+/// ReprÃ©sente un bateau en donnant son type, sa position et sa direction
 ///
 struct Bateau {
-	
+
     ///
     /// Donne le type de bateau: TypeBateau { PORTE_AVION, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
     ///
     TypeBateau Type;
-	
+
     ///
-    /// La case en haut a gauche est la case (0;0). On écrit dabord la ligne puis la colonne, ex : B3 = (2;1)
+    /// La case en haut a gauche est la case (0;0). On ï¿½crit dabord la ligne puis la colonne, ex : B3 = (2;1)
     ///
 	int Position[2];
 
@@ -56,7 +57,7 @@ struct Bateau {
 class Plateau {
 
 private:
-    
+
     ///
     /// Etat dans laquelle la partie se trouve : Etat {START, TOUR_JOUEUR, TOUR_ORDI, VICTOIRE_JOUEUR, VICTOIRE_ORDI };
     ///
@@ -66,7 +67,7 @@ private:
     ///Contient les bateaux appartenant au joueur a afficher sur la grille du joueur
     ///
     vector<Bateau> bateauxJoueur;
-    
+
     ///
     ///Contient les bateaux appartenant a l ordi qui ne seront pas affiche
     ///
@@ -81,6 +82,16 @@ private:
     ///Contient les tirs de l ordi a afficher sur la grille du joueur
     ///
     vector<Tir> tirsOrdi;
+
+    ///
+    ///Teste si le bateau b est coule a cause des tirs
+    ///
+    bool testcoule(Bateau b, vector<Tir> tirs);
+
+    ///
+    ///Teste si le tir t touche au moins un des bateaux
+    ///
+    bool testtouche(Tir t, vector<Bateau> bateaux);
 
 public:
 
@@ -130,7 +141,7 @@ public:
     /// Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour le joueur
     ///
     vector<Bateau> initialiseBateauxJ();
-    
+
     ///
     /// Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour l ordi
     ///
@@ -162,7 +173,7 @@ public:
     bool testcouleordi(Bateau b);
 
     ///
-    ///Prend une position donnée et ajoute un tir au joueur
+    ///Prend une position donnï¿½e et ajoute un tir au joueur
     ///
     void maketirjoueur(int ligne,int colonne);
 
@@ -174,9 +185,5 @@ public:
     // void input(Touche); a implementer plus tard
 
 };
-
-
-
-
 
 #endif
