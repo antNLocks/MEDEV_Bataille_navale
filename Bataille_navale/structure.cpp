@@ -505,6 +505,47 @@ void Plateau::maketirordi() {
 		tirsOrdi.push_back(t);
 }
 
+bool Plateau::testcollisionbateaux(Bateau b1, Bateau b2){
+	vector<int> lignesB1;
+	vector<int> lignesB2;
+
+	vector<int> colonnesB1;
+  vector<int> colonnesB2;
+
+	if(b1.Direction){ //b1 vertical
+		for(int i = 0; i < tailleBateauMap[b1.Type]; i++){
+			colonnesB1.push_back(b1.Position[1]);
+			lignesB1.push_back(b1.Position[0] + i);
+		}
+	}else { //b1 horizontal
+		for(int i = 0; i < tailleBateauMap[b1.Type]; i++){
+			lignesB1.push_back(b1.Position[0]);
+			colonnesB1.push_back(b1.Position[1] + i);
+		}
+	}
+
+	if(b2.Direction){ //b2 vertical
+		for(int i = 0; i < tailleBateauMap[b2.Type]; i++){
+			colonnesB2.push_back(b2.Position[1]);
+			lignesB2.push_back(b2.Position[0] + i);
+		}
+	}else { //b2 horizontal
+		for(int i = 0; i < tailleBateauMap[b2.Type]; i++){
+			lignesB2.push_back(b2.Position[0]);
+			colonnesB2.push_back(b2.Position[1 ]+ i);
+		}
+	}
+
+	for(int i1 = 0; i1 < lignesB1.size(); i1++){
+		for(int i2 = 0; i2 < lignesB2.size(); i2++){
+					if(lignesB1[i1] == lignesB2[i2] && colonnesB1[i1] == colonnesB2[i2])
+						return true;
+
+			}
+	}
+	return false;
+}
+
 vector<Bateau> Plateau::initialiseBateauxJ() {
 
 	int ligne,colonne;

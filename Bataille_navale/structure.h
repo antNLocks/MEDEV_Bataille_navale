@@ -6,10 +6,19 @@
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <map>
 using namespace std;
 
 #define NB_TYPES_BATEAU 5
 enum TypeBateau { PORTE_AVION = 0, CROISEUR, CONTRE_TORPILLEUR, SOUS_MARIN, TORPILLEUR };
+
+inline map<TypeBateau, int> tailleBateauMap = {{PORTE_AVION, 5}, {CROISEUR, 4}, {CONTRE_TORPILLEUR, 3}, {SOUS_MARIN, 3}, {TORPILLEUR, 2},};
+
+#define PORTE_AVION_SIZE 5
+#define CROISEUR_SIZE 4
+#define CONTRE_TORPILLEUR_SIZE 3
+#define SOUS_MARIN_SIZE 3
+#define TORPILLEUR_SIZE 2
 
 enum Etat {START, TOUR_JOUEUR, TOUR_ORDI, VICTOIRE_JOUEUR, VICTOIRE_ORDI };
 
@@ -93,6 +102,10 @@ private:
     ///
     bool testtouche(Tir t, vector<Bateau> bateaux);
 
+    ///
+    ///Teste si b1 et b2 sont en collision
+    ///
+    bool testcollisionbateaux(Bateau b1, Bateau b2);
 public:
 
     //CONSTRUCTEURS
