@@ -569,10 +569,14 @@ void Plateau::initialiseBateauxJ() {
 	if (b1.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 6; //int entre 1 et 5 (pour ne pas depasser de la grille
+		b1.Position[0] = ligne;
+		b1.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 6;
+		b1.Position[0] = ligne;
+		b1.Position[1] = colonne;
 	}
 
 	//On ajoute dans le vecteur
@@ -588,13 +592,17 @@ void Plateau::initialiseBateauxJ() {
 	b2.Direction = D22;
 
 	//Position
-	if (b1.Direction) {
+	if (b2.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 7; //int entre 1 et 6 (pour ne pas depasser de la grille
+		b2.Position[0] = ligne;
+		b2.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 7;
+		b2.Position[0] = ligne;
+		b2.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -613,10 +621,14 @@ void Plateau::initialiseBateauxJ() {
 	if (b3.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+		b3.Position[0] = ligne;
+		b3.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 8;
+		b3.Position[0] = ligne;
+		b3.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -635,10 +647,14 @@ void Plateau::initialiseBateauxJ() {
 	if (b4.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+		b4.Position[0] = ligne;
+		b4.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 8;
+		b4.Position[0] = ligne;
+		b4.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -657,10 +673,14 @@ void Plateau::initialiseBateauxJ() {
 	if (b5.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 9; //int entre 1 et 7 (pour ne pas depasser de la grille
+		b5.Position[0] = ligne;
+		b5.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 9;
+		b5.Position[0] = ligne;
+		b5.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -671,46 +691,54 @@ void Plateau::initialiseBateauxJ() {
 void Plateau::initialiseBateauxO() {
 	
 	int ligne,colonne;
-	
+
 	//AJOUT PORTE AVION
 	Bateau b1;
 	b1.Type = PORTE_AVION;
-		
+
 	//Direction
 	int D1 = rand() % 2; //int entre 0 et 1
 	bool D11 = (bool)D1;
 	b1.Direction = D11;
-		
+
 	//Position
 	if (b1.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 6; //int entre 1 et 5 (pour ne pas depasser de la grille
+		b1.Position[0] = ligne;
+		b1.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 6;
+		b1.Position[0] = ligne;
+		b1.Position[1] = colonne;
 	}
-	
+
 	//On ajoute dans le vecteur
 	bateauxOrdi.push_back(b1);
-	
-	//AJOUT	CROISEUR	
+
+	//AJOUT	CROISEUR
 	Bateau b2;
 	b2.Type = CROISEUR;
-	
+
 	//Direction
 	int D2 = rand() % 2; //int entre 0 et 1
 	bool D22 = (bool)D2;
 	b2.Direction = D22;
-	
+
 	//Position
-	if (b1.Direction) {
+	if (b2.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 7; //int entre 1 et 6 (pour ne pas depasser de la grille
+		b2.Position[0] = ligne;
+		b2.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 7;
+		b2.Position[0] = ligne;
+		b2.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -729,10 +757,14 @@ void Plateau::initialiseBateauxO() {
 	if (b3.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+		b3.Position[0] = ligne;
+		b3.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 8;
+		b3.Position[0] = ligne;
+		b3.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -751,10 +783,14 @@ void Plateau::initialiseBateauxO() {
 	if (b4.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+		b4.Position[0] = ligne;
+		b4.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 8;
+		b4.Position[0] = ligne;
+		b4.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur
@@ -773,10 +809,14 @@ void Plateau::initialiseBateauxO() {
 	if (b5.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
 		ligne = rand() % 9; //int entre 1 et 7 (pour ne pas depasser de la grille
+		b5.Position[0] = ligne;
+		b5.Position[1] = colonne;
 	}
 	else {
 		ligne = rand() % 10;
 		colonne = rand() % 9;
+		b5.Position[0] = ligne;
+		b5.Position[1] = colonne;
 	}
 	
 	//On ajoute dans le vecteur

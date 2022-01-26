@@ -13,6 +13,8 @@
 Afficheur afficheur;
 
 GLvoid affichage() {
+	
+	//Deroulement partie
 	Plateau P = Plateau();
 	P.initialiseBateauxJ();
 	P.initialiseBateauxO();
@@ -29,7 +31,6 @@ GLvoid affichage() {
 		P.setState(TOUR_ORDI);
 		P.maketirordi();
 		P.majBateaux();
-		cout << "Le nombre de bateaux du joueur est de: " << P.getBateauxJoueur().size() << endl;
 		afficheur.affichage(P.getBateauxJoueur(),P.getBateauxOrdi(),P.getTirsJoueur(),P.getTirsOrdi());
 		P.testVictoire();
 	}
@@ -74,6 +75,9 @@ void MakeGame() {
 
 int main(int argc, char** argv)
 {
+    /* initialize random seed: */
+	srand (time(NULL));
+    
     glutInit(&argc, argv); //Init de glut
     glutInitDisplayMode(GLUT_RGB); //Choix du mode d'affichage
     glutInitWindowPosition(200, 200); //Position initaile de la fenêtre
