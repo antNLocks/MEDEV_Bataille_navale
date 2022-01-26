@@ -1,5 +1,10 @@
 #include <gtest/gtest.h>
 
+#include "structure.h"
+
+void test_testcollisionBateau(Bateau b1, Bateau b2){
+  
+}
 
 /*#include "lib.h"
 
