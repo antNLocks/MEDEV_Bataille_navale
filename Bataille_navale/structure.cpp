@@ -22,6 +22,12 @@ vector<Tir> Plateau::getTirsOrdi() const {
 	return tirsOrdi;
 }
 
+//SETTEURS
+
+void Plateau::setState(Etat e) {
+	Plateau.State = e;
+}
+
 //FONCTIONS
 
 void Plateau::majBateaux() {

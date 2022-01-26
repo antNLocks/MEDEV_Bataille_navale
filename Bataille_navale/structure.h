@@ -138,6 +138,13 @@ public:
     ///
     vector<Tir> getTirsOrdi() const;
 
+    //SETTEURS
+    
+    ///
+    /// Change l etat de la partie
+    ///
+    void setState(Etat e);
+
     //FONCTIONS
 
     ///

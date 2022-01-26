@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Afficheur.h"
+#include "structure.h"
+#include <string>
 
 #ifdef __linux__
     #include <GL/gl.h>
@@ -11,7 +13,35 @@
 Afficheur afficheur;
 
 GLvoid affichage() {
-    afficheur.affichage();
+	Plateau P = Plateau();
+	P.initialiseBateauxJ();
+	P.initialiseBateauxO();
+	while ((P.getState() != VICTOIRE_JOUEUR) || (P.getState() != VICTOIRE_ORDI)) {
+		P.setState(TOUR_JOUEUR);
+		cout << "Quelle est la ligne que vous voulez toucher ?" << endl ;
+		int ligne,colonne;
+		cin >> ligne ;
+		cout << "Quelle est la colonne que vous voulez toucher ?" << endl ;
+		cin >> colonne;
+		P.maketirjoueur(ligne,colonne);
+		P.majBateaux();
+		afficheur.affichage(P.getBateauxJoueur(),P.getBateauxOrdi(),P.getTirsJoueur(),P.getTirsOrdi());
+		P.setState(TOUR_ORDI);
+		P.maketirordi();
+		P.majBateaux();
+		afficheur.affichage(P.getBateauxJoueur(),P.getBateauxOrdi(),P.getTirsJoueur(),P.getTirsOrdi());
+		P.testVictoire();
+	}
+	
+	string V;
+	if (P.getState() = VICTOIRE_JOUEUR) {
+		V = "le joueur.";
+	}
+	else {
+		V = "l'ordinateur.";
+	}
+	cout << "Le vainqueur est: " << V << endl;
+    
 }
 
 GLvoid clavier(unsigned char touche, int x, int y) {
@@ -33,6 +63,13 @@ GLvoid clavier(unsigned char touche, int x, int y) {
 
     glutPostRedisplay(); //Reaffiche la scene
 }
+
+void MakeGame() {
+	
+	
+	
+}
+
 
 int main(int argc, char** argv)
 {
