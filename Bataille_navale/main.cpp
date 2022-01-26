@@ -34,7 +34,7 @@ GLvoid affichage() {
 	}
 	
 	string V;
-	if (P.getState() = VICTOIRE_JOUEUR) {
+	if (P.getState() == VICTOIRE_JOUEUR) {
 		V = "le joueur.";
 	}
 	else {
