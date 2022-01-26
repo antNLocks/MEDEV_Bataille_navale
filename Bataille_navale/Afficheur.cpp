@@ -56,7 +56,7 @@ void Afficheur::afficheTirs(bool grilleActive)
                 afficheTirTouche(grilleActive, tirsOrdi[i].Position[0], tirsOrdi[i].Position[1]);
             }
             else {
-                afficheTirCoule(grilleActive, tirsOrdi[i].Position[0], tirsOrdi[i].Position[1]);
+                afficheTirRate(grilleActive, tirsOrdi[i].Position[0], tirsOrdi[i].Position[1]);
             }
         }
     }
@@ -66,7 +66,7 @@ void Afficheur::afficheTirs(bool grilleActive)
                 afficheTirTouche(grilleActive, tirsJoueur[i].Position[0], tirsJoueur[i].Position[1]);
             }
             else {
-                afficheTirCoule(grilleActive, tirsJoueur[i].Position[0], tirsJoueur[i].Position[1]);
+                afficheTirRate(grilleActive, tirsJoueur[i].Position[0], tirsJoueur[i].Position[1]);
             }
         }
     }
