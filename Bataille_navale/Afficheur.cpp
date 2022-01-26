@@ -152,8 +152,13 @@ Afficheur::Afficheur()
     coorGrilleOrdi[3] = 2 * (5.0f / 6) - 1;
 }
 
-void Afficheur::affichage()
+void Afficheur::affichage(vector<Bateau> bateauxJoueur, vector<Bateau> bateauxOrdi, vector<Tir> tirsJoueur, vector<Tir> tirsOrdi)
 {
+    setBateauxJoueur(bateauxJoueur);
+    setBateauxOrdi(bateauxOrdi);
+    setTirsJoueur(tirsJoueur);
+    setTirsOrdi(tirsOrdi);
+
     glClear(GL_COLOR_BUFFER_BIT);
 
     afficheGrille(true);
