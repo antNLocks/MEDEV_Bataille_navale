@@ -43,6 +43,6 @@ public :
 	/// <summary>
 	/// Réalise l'affichage à partir de l'état du jeu courant en mémoire
 	/// </summary>
-	void affichage();
+	void affichage(vector<Bateau> bateauxJoueur, vector<Bateau> bateauxOrdi, vector<Tir> tirsJoueur, vector<Tir> tirsOrdi);
 
 };
