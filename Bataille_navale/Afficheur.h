@@ -23,15 +23,20 @@ private :
 	std::vector<Tir> tirsOrdi;
 	// Contient les tirs de l'ordi à afficher sur la grille du joueur
 
+	void setBateauxJoueur(std::vector<Bateau> bateauxJoueurs);
+	void setBateauxOrdi(std::vector<Bateau> bateauxOrdi);
+	void setTirsJoueur(std::vector<Tir> tirsJoueur);
+	void setTirsOrdi(std::vector<Tir> TirsOrdi);
+
 	void colorierCase(bool grilleActive, int noColonne, int noLigne, float R, float G, float B);
 
 	void afficheGrille(bool grilleActive);
 	void afficheBateaux(bool grilleActive);
+	void afficheTirs(bool grilleActive);
+	void afficheBateau(bool grilleActive, int noLigne, int noColonne);
 	void afficheTirRate(bool grilleActive, int noColonne, int noLigne);
 	void afficheTirTouche(bool grilleActive, int noColonne, int noLigne);
 	void afficheTirCoule(bool grilleActive, int noColonne, int noLigne);
-
-	void dataFiller();
 
 public :
 	Afficheur();

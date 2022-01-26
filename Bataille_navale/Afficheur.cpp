@@ -22,6 +22,81 @@ void Afficheur::afficheGrille(bool grilleActive)
     }
 }
 
+void Afficheur::afficheBateaux(bool grilleActive)
+{
+    if (grilleActive) { // C'est la grille du joueur qui est remplie avec les bateaux
+        for (int i = 0; i < bateauxJoueur.size(); i++) { // Pour chaque bateau
+            int l = 0;
+            int c = 0;
+            for (int j = 0; j < tailleBateauMap[bateauxJoueur[i].Type]; j++) { // Pour chaque case du bateau
+                afficheBateau(grilleActive, bateauxJoueur[i].Position[0]+l, bateauxJoueur[i].Position[1]+c);
+                if (bateauxJoueur[i].Direction) { l = l + 1; }
+                else { c = c + 1; }
+            }
+        }
+    }
+    else { // C'est la grille de l'ordi qui est qui est remplie avec les bateaux
+        for (int i = 0; i < bateauxOrdi.size(); i++) { // Pour chaque bateau
+            int l = 0;
+            int c = 0;
+            for (int j = 0; j < tailleBateauMap[bateauxOrdi[i].Type]; j++) { // Pour chaque case du bateau
+                afficheBateau(grilleActive, bateauxOrdi[i].Position[0] + l, bateauxOrdi[i].Position[1] + c);
+                if (bateauxOrdi[i].Direction) { l = l + 1; }
+                else { c = c + 1; }
+            }
+        }
+    }
+}
+
+void Afficheur::afficheTirs(bool grilleActive)
+{
+    if (grilleActive) { // On affiche les tirs de l'ordi sur la grille du joueur
+        for (int i = 0; i < tirsOrdi.size(); i++) { // Pour chaque tir
+            if (tirsOrdi[i].Resultat) {
+                afficheTirTouche(grilleActive, tirsOrdi[i].Position[0], tirsOrdi[i].Position[1]);
+            }
+            else {
+                afficheTirCoule(grilleActive, tirsOrdi[i].Position[0], tirsOrdi[i].Position[1]);
+            }
+        }
+    }
+    else {
+        for (int i = 0; i < tirsJoueur.size(); i++) { // Pour chaque tir
+            if (tirsJoueur[i].Resultat) {
+                afficheTirTouche(grilleActive, tirsJoueur[i].Position[0], tirsJoueur[i].Position[1]);
+            }
+            else {
+                afficheTirCoule(grilleActive, tirsJoueur[i].Position[0], tirsJoueur[i].Position[1]);
+            }
+        }
+    }
+}
+
+void Afficheur::afficheBateau(bool grilleActive, int noLigne, int noColonne)
+{
+    colorierCase(grilleActive, noLigne, noColonne, 0.5f, 0.5f, 0.5f); // gris
+}
+
+void Afficheur::setBateauxJoueur(std::vector<Bateau> _bateauxJoueurs)
+{
+    bateauxJoueur = _bateauxJoueurs;
+}
+
+void Afficheur::setBateauxOrdi(std::vector<Bateau> _bateauxOrdi)
+{
+    bateauxOrdi = _bateauxOrdi;
+}
+
+void Afficheur::setTirsJoueur(std::vector<Tir> _tirsJoueur)
+{
+    tirsJoueur = _tirsJoueur;
+}
+
+void Afficheur::setTirsOrdi(std::vector<Tir> _tirsOrdi)
+{
+    tirsOrdi = _tirsOrdi;
+}
+
 void Afficheur::colorierCase(bool grilleActive, int noLigne, int noColonne, float R, float G, float B)
 {
     noLigne = 9 - noLigne;
@@ -49,7 +124,7 @@ void Afficheur::colorierCase(bool grilleActive, int noLigne, int noColonne, floa
     glEnd();
 }
 
-void Afficheur::afficheTirRate(bool grilleActive, int noColonne, int noLigne)
+void Afficheur::afficheTirRate(bool grilleActive, int noLigne, int noColonne)
 {
     colorierCase(grilleActive, noLigne ,noColonne, 0.0f, 0.0f, 1.0f); // bleu
 }
@@ -59,23 +134,9 @@ void Afficheur::afficheTirTouche(bool grilleActive, int noLigne, int noColonne)
     colorierCase(grilleActive, noLigne, noColonne, 1.0f, 0.0f, 0.0f); // rouge
 }
 
-void Afficheur::afficheTirCoule(bool grilleActive, int noColonne, int noLigne)
+void Afficheur::afficheTirCoule(bool grilleActive, int noLigne, int noColonne)
 {
     colorierCase(grilleActive, noLigne, noColonne, 0.364f, 0.023f, 0.501f); // violet
-}
-
-void Afficheur::dataFiller()
-{
-    Bateau bateau1 = { PORTE_AVION,{0,0},true };
-    Bateau bateau2 = { CROISEUR,{0,1},true };
-    Bateau bateau3 = { CONTRE_TORPILLEUR,{0,2},true };
-    Bateau bateau4 = { SOUS_MARIN,{0,3},true };
-    Bateau bateau5 = { TORPILLEUR,{0,4},true };
-    bateauxJoueur.push_back(bateau1);
-    bateauxJoueur.push_back(bateau2);
-    bateauxJoueur.push_back(bateau3);
-    bateauxJoueur.push_back(bateau4);
-    bateauxJoueur.push_back(bateau5);
 }
 
 Afficheur::Afficheur()
@@ -98,10 +159,11 @@ void Afficheur::affichage()
     afficheGrille(true);
     afficheGrille(false);
 
-    // Tests d'affichage à retirer
-    afficheTirTouche(true, 2, 1);
-    afficheTirCoule(true, 4, 1);
-    afficheTirRate(true, 6, 1);
+    afficheBateaux(true);
+    //afficheBateaux(false); On affiche pas les bateaux de l'ordi
+
+    afficheTirs(true);
+    afficheTirs(false);
 
     glFlush();
 }
