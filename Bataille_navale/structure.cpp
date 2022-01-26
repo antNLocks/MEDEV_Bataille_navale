@@ -25,7 +25,7 @@ vector<Tir> Plateau::getTirsOrdi() const {
 //SETTEURS
 
 void Plateau::setState(Etat e) {
-	Plateau.State = e;
+	State = e;
 }
 
 //FONCTIONS
