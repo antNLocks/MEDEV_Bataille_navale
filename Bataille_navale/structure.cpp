@@ -504,7 +504,7 @@ void Plateau::maketirordi() {
 		//On ajoute le tir au vecteur
 		tirsOrdi.push_back(t);
 }
-
+	
 bool Plateau::testcollisionbateaux(Bateau b1, Bateau b2){
 	vector<int> lignesB1;
 	vector<int> lignesB2;
@@ -546,7 +546,7 @@ bool Plateau::testcollisionbateaux(Bateau b1, Bateau b2){
 	return false;
 }
 
-vector<Bateau> Plateau::initialiseBateauxJ() {
+void Plateau::initialiseBateauxJ() {
 
 	int ligne,colonne;
 
@@ -562,7 +562,7 @@ vector<Bateau> Plateau::initialiseBateauxJ() {
 	//Position
 	if (b1.Direction) {
 		colonne = rand() % 10; //int entre 1 et 9
-		ligne = rand() % 6; //int entre 1 et 6 (pour ne pas depasser de la grille
+		ligne = rand() % 6; //int entre 1 et 5 (pour ne pas depasser de la grille
 	}
 	else {
 		ligne = rand() % 10;
@@ -582,13 +582,199 @@ vector<Bateau> Plateau::initialiseBateauxJ() {
 	b2.Direction = D22;
 
 	//Position
-	if (b2.Direction) {
-
+	if (b1.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 7; //int entre 1 et 6 (pour ne pas depasser de la grille
 	}
 	else {
-
+		ligne = rand() % 10;
+		colonne = rand() % 7;
 	}
+	
+	//On ajoute dans le vecteur
+	bateauxJoueur.push_back(b2);
+	
+	//AJOUT	CONTRE_TORPILLEUR	
+	Bateau b3;
+	b3.Type = CONTRE_TORPILLEUR;
+	
+	//Direction
+	int D3 = rand() % 2; //int entre 0 et 1
+	bool D33 = (bool)D3;
+	b3.Direction = D33;
+	
+	//Position
+	if (b3.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 8;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxJoueur.push_back(b3);
+	
+	//AJOUT	SOUS_MARIN	
+	Bateau b4;
+	b4.Type = SOUS_MARIN;
+	
+	//Direction
+	int D4 = rand() % 2; //int entre 0 et 1
+	bool D44 = (bool)D4;
+	b4.Direction = D44;
+	
+	//Position
+	if (b4.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 8;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxJoueur.push_back(b4);
+		
+	//AJOUT	TORPILLEUR	
+	Bateau b5;
+	b5.Type = TORPILLEUR;
+	
+	//Direction
+	int D5 = rand() % 2; //int entre 0 et 1
+	bool D55 = (bool)D5;
+	b5.Direction = D55;
+	
+	//Position
+	if (b5.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 9; //int entre 1 et 7 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 9;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxJoueur.push_back(b5);
+	
+}
 
+void Plateau::initialiseBateauxO() {
+	
+	int ligne,colonne;
+	
+	//AJOUT PORTE AVION
+	Bateau b1;
+	b1.Type = PORTE_AVION;
+		
+	//Direction
+	int D1 = rand() % 2; //int entre 0 et 1
+	bool D11 = (bool)D1;
+	b1.Direction = D11;
+		
+	//Position
+	if (b1.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 6; //int entre 1 et 5 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 6;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxOrdi.push_back(b1);
+	
+	//AJOUT	CROISEUR	
+	Bateau b2;
+	b2.Type = CROISEUR;
+	
+	//Direction
+	int D2 = rand() % 2; //int entre 0 et 1
+	bool D22 = (bool)D2;
+	b2.Direction = D22;
+	
+	//Position
+	if (b1.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 7; //int entre 1 et 6 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 7;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxOrdi.push_back(b2);
+	
+	//AJOUT	CONTRE_TORPILLEUR	
+	Bateau b3;
+	b3.Type = CONTRE_TORPILLEUR;
+	
+	//Direction
+	int D3 = rand() % 2; //int entre 0 et 1
+	bool D33 = (bool)D3;
+	b3.Direction = D33;
+	
+	//Position
+	if (b3.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 8;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxOrdi.push_back(b3);
+	
+	//AJOUT	SOUS_MARIN	
+	Bateau b4;
+	b4.Type = SOUS_MARIN;
+	
+	//Direction
+	int D4 = rand() % 2; //int entre 0 et 1
+	bool D44 = (bool)D4;
+	b4.Direction = D44;
+	
+	//Position
+	if (b4.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 8; //int entre 1 et 7 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 8;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxOrdi.push_back(b4);
+		
+	//AJOUT	TORPILLEUR	
+	Bateau b5;
+	b5.Type = TORPILLEUR;
+	
+	//Direction
+	int D5 = rand() % 2; //int entre 0 et 1
+	bool D55 = (bool)D5;
+	b5.Direction = D55;
+	
+	//Position
+	if (b5.Direction) {
+		colonne = rand() % 10; //int entre 1 et 9
+		ligne = rand() % 9; //int entre 1 et 7 (pour ne pas depasser de la grille
+	}
+	else {
+		ligne = rand() % 10;
+		colonne = rand() % 9;
+	}
+	
+	//On ajoute dans le vecteur
+	bateauxOrdi.push_back(b5);
 
 
 }

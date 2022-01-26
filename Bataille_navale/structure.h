@@ -93,16 +93,6 @@ private:
     vector<Tir> tirsOrdi;
 
     ///
-    ///Teste si le bateau b est coule a cause des tirs
-    ///
-    bool testcoule(Bateau b, vector<Tir> tirs);
-
-    ///
-    ///Teste si le tir t touche au moins un des bateaux
-    ///
-    bool testtouche(Tir t, vector<Bateau> bateaux);
-
-    ///
     ///Teste si b1 et b2 sont en collision
     ///
     bool testcollisionbateaux(Bateau b1, Bateau b2);
@@ -115,8 +105,8 @@ public:
     ///
     Plateau() {
         this -> State = START;
-        this -> bateauxJoueur = initialiseBateauxJ();
-        this -> bateauxOrdi = initialiseBateauxO();
+        this -> bateauxJoueur = {};
+        this -> bateauxOrdi = {};
         this -> tirsJoueur = {};
         this -> tirsOrdi = {};
     }
@@ -151,14 +141,14 @@ public:
     //FONCTIONS
 
     ///
-    /// Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour le joueur
+    /// Modifie bateauxJoueuer avec un vecteur de bateaux places aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour le joueur, pas parfait, probleme d occlusion par manque de temps, a n utiliser qu u
     ///
-    vector<Bateau> initialiseBateauxJ();
+    void initialiseBateauxJ();
 
     ///
-    /// Retourne un vecteur de bateau place aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour l ordi
+    /// Modifie bateauxOrdi avec un vecteur de bateaux places aleatoirement contenant un bateau de chaque type qui ne se recouvrent pas pour l ordi, pas parfait, probleme d occlusion par manque de temps
     ///
-    vector<Bateau> initialiseBateauxO();
+    void initialiseBateauxO();
 
     ///
     /// Verifie si l un des joueurs a gagne et change l etat (State)
@@ -174,6 +164,16 @@ public:
     ///Enleve les bateaux entierement touches de la liste
     ///
     void majBateaux();
+
+    ///
+    ///Teste si le bateau b est coule a cause des tirs
+    ///
+    bool testcoule(Bateau b, vector<Tir> tirs);
+
+    ///
+    ///Teste si le tir t touche au moins un des bateaux
+    ///
+    bool testtouche(Tir t, vector<Bateau> bateaux);
 
     ///
     ///Teste si un bateau joueur est entierement touche
