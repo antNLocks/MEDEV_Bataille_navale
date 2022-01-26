@@ -29,6 +29,7 @@ GLvoid affichage() {
 		P.setState(TOUR_ORDI);
 		P.maketirordi();
 		P.majBateaux();
+		cout << "Le nombre de bateaux du joueur est de: " << P.getBateauxJoueur().size() << endl;
 		afficheur.affichage(P.getBateauxJoueur(),P.getBateauxOrdi(),P.getTirsJoueur(),P.getTirsOrdi());
 		P.testVictoire();
 	}
